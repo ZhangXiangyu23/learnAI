@@ -19,7 +19,9 @@ l.pack()
 
 
 def job():
+    # 获取现在鼠标点击项的内容
     v = lb.get(lb.curselection())
+    # 设定标签内容
     var1.set(v)
 
 
@@ -33,9 +35,10 @@ var2 = tk.StringVar()
 var2.set(("清华大学", "北京大学", "复旦大学", "交通大学"))
 # 创建列表盒子
 lb =tk.Listbox(window, listvariable=var2)
-list_item = [1,2,3,4]
-for list in  list_item:
-    lb.insert("end", list)
+list_item = [1, 2, 3, 4]
+# 循环插入
+for m in list_item:
+    lb.insert("end", m)
 
 lb.insert(1, "first")
 lb.insert(2, "second")

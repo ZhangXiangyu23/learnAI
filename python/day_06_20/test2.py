@@ -29,9 +29,9 @@ def insert_point():
 
 
 # 设定按钮1,最末尾进行插入
-b1 = tk.Button(window, text="end insert",command=insert_end)
+b1 = tk.Button(window, text="end insert", command=insert_end)
 # 设定按钮2，在插入点进行插入
-b2 = tk.Button(window, text="point insert",command=insert_point)
+b2 = tk.Button(window, text="point insert", command=insert_point)
 
 
 # 放置按钮1

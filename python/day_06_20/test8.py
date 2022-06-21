@@ -25,7 +25,7 @@ def job():
 # 获取菜单栏
 menubar = tk.Menu(window)
 
-# 菜单1之文件
+# 菜单1之文件菜单
 filemenu = tk.Menu(menubar, tearoff=0)
 # 使用菜单栏将文件菜单添加进去
 menubar.add_cascade(label="文件", menu=filemenu)
@@ -46,9 +46,11 @@ universitymenu.add_command(label="北京大学", command=job)
 universitymenu.add_command(label="浙江大学", command=job)
 
 
-# 二级菜单
+# 创建二级菜单，文件菜单是一级菜单，所以是父组件
 second_menu = tk.Menu(filemenu)
+# 文件菜单父组件将二级菜单进行添加
 filemenu.add_cascade(label="导入", menu=second_menu, underline=0)
+# 二级菜单中放具体项
 second_menu.add_command(label="你好",command=job)
 
 

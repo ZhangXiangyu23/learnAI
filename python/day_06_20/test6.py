@@ -13,6 +13,7 @@ window.title("练习多选按钮")
 # 设置窗口的尺寸
 window.geometry("1000x500")
 
+# 组件中的整数变量写法
 var1 = tk.IntVar()
 var2 = tk.IntVar()
 # 标签

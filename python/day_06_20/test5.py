@@ -22,7 +22,7 @@ l.pack()
 def job(v):
     l.config(text="现在的音量是" + v)
 
-# 定义一个scale
+# 定义一个scale，设定其长度，具体起始点，水平方向，精度等
 scale = tk.Scale(window, length=500, orient=tk.HORIZONTAL,from_ = 0,to=100,
                  tickinterval=10, resolution=0.01, showvalue=1, command=job)
 # 放置scale

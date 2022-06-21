@@ -15,7 +15,8 @@ window.geometry("1000x500")
 # 创建画布
 canvas = tk.Canvas(window, bg="blue", height=400, width=700)
 # 加载图片文件
-image_file = tk.PhotoImage(file="F:\\研究生0年级\\learnAI\\21-1Z410162F6-50.gif")
+image_file = tk.PhotoImage(file="F:\\研究生0年级\\learnAI\\a.png")
+# 将图片放在画布中的具体位置
 image = canvas.create_image(10, 10, anchor="nw", image = image_file)
 
 
