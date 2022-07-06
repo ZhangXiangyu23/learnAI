@@ -3,6 +3,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib import animation
 
+
+"""
+    使用动画显示数据
+"""
+
 fig, ax = plt.subplots()
 
 # 范围是0~2π， 步长为0.01
