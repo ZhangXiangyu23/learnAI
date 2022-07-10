@@ -8,11 +8,12 @@ import numpy as np
 
 n = 12
 X = np.arange(n)
-# uniform表示均匀分布
+# uniform表示均匀分布,从均匀分布中生成n个,范围为[0.5, 1.0)的随机数!
 Y1 = (1-X/float(n))*np.random.uniform(0.5, 1.0, n)
 Y2 = (1-X/float(n))*np.random.uniform(0.5, 1.0, n)
 
-plt.bar(X, +Y1, facecolor='#9999ff', edgecolor='white')
+# facecolor表示直方颜色,edgecolor表示直方边缘颜色
+plt.bar(X, +Y1, facecolor='#9999ff', edgecolor='green')
 plt.bar(X, -Y2, facecolor='#ff9999', edgecolor='white')
 
 for x, y in zip(X, Y1):

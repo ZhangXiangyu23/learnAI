@@ -7,7 +7,7 @@ import numpy as np
 """
 
 n = 1024
-# 生成n个均值为0，标准差为1的随机数   正太分布
+# 按照正态分布(也叫做高斯分布)生成n个均值为0，标准差为1的随机数
 X = np.random.normal(0, 1, n)
 Y = np.random.normal(0, 1, n)
 # 为了生成颜色

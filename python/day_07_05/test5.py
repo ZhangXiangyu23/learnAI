@@ -39,6 +39,7 @@ y2 = -x + 1
 
 l1, = plt.plot(x, y1, color="red", linewidth=2.0, linestyle="--", label="two")
 l2, = plt.plot(x, y2, label="one")
-plt.legend(handles=[l1, l2,], labels=["aaa", "bbb"], loc="best")
+# loc="best"表示将自适应最佳的位置
+plt.legend(handles=[l1, l2, ], labels=["aaa", "bbb"], loc="best")
 # 进行绘制
 plt.show()

@@ -12,18 +12,18 @@ def f(x,y):
 
 
 n = 256
-# 生成范围为-3~3，生成点的个数为256
-# 生成256个随机的x坐标
+# 生成范围为-3~3，生成点的个数为256,间隔均匀
 x = np.linspace(-3, 3, n)
-# 生成256个随机的y坐标
-y = np.linspace(-3,3, n)
+# 生成范围为-3~3，生成点的个数为256,间隔均匀
+y = np.linspace(-3, 3, n)
 # print(x)
 # print(y)
 # 生成网格点坐标矩阵，通俗的讲就是，将x坐标一个一个对应上y坐标，相当于形成了网格坐标！！！
-X, Y = np.meshgrid(x,y)
+X, Y = np.meshgrid(x, y)
 # print(X)
 # print(Y)
 # 参数8表示将颜色等级分为10部分。因为为0时，将颜色等级分为了两部分！！！
+# cmap表示热力图的形式,
 plt.contourf(X, Y, f(X,Y), 8, alpha=0.75, cmap=plt.cm.hot)
 
 

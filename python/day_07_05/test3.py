@@ -6,8 +6,8 @@ import numpy as np
     对图像的坐标轴进行设定
 """
 
-# 造数据
-x = np.linspace(-1, 1 ,50)
+# 造数据, 在-1~1之间均匀生成50个数
+x = np.linspace(-1, 1, 50)
 y = x**2
 plt.plot(x, y, color="red", linewidth=2.0, linestyle="--")
 # 设定x的范围
@@ -20,7 +20,7 @@ plt.xlabel("I am x")
 # 设置y轴描述
 plt.ylabel("I am y")
 
-# 设置每一格的宽度,参数2是起始，参数1是终止，参数5是刻度总数
+# 设置每一格的宽度,参数-2是起始，参数1是终止，参数5是刻度总数
 new_ticks = np.linspace(-2, 1, 5)
 # print(new_ticks)
 # 设定新的横轴刻度

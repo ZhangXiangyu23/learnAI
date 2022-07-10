@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 """
-    绘制2*X+1的图像
+    对图片进行标注
 """
 
 # 造数据
@@ -43,7 +43,7 @@ plt.annotate(r'$2x+1=%s$' % y0, xy=(x0, y0), xycoords="data", xytext=(+30, -30),
              arrowprops=dict(arrowstyle="->", connectionstyle="arc3, rad=.2"))
 
 plt.text(-4.7, 3, r'$This\ is\ the\ some\ text.\ \mu\ \sigma_i\ \alpha_t$',
-         fontdict={"size":16, "color": 'r'})
+         fontdict={"size": 16, "color": 'r'})
 
 plt.show()
 

@@ -12,6 +12,7 @@ ax = Axes3D(fig)
 
 X = np.arange(-4, 4, 0.25)
 Y = np.arange(-4, 4, 0.25)
+# 生成网格点坐标矩阵，通俗的讲就是，将x坐标一个一个对应上y坐标，相当于形成了网格坐标！！！
 X, Y = np.meshgrid(X, Y)
 R = np.sqrt(X**2+Y**2)
 
