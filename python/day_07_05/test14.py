@@ -8,6 +8,8 @@ y = [1, 3, 4, 2, 5, 8, 6]
 
 left, bottom, width, height = 0.1, 0.1, 0.8, 0.8
 ax1 = fig.add_axes([left, bottom, width, height])
+print(type(x))
+print(type(y))
 ax1.plot(x, y, 'r')
 
 
