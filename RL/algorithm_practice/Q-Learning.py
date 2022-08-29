@@ -58,7 +58,7 @@ class Q_table():
         self.length = length
         self.height = height
         self.alpha = alpha
-        self.gamma = gamma # 折扣因子
+        self.gamma = gamma  # 折扣因子
 
     # 在一维Q表中寻找，对应状态下采取特定action的索引
     def _index(self, a, x, y):
@@ -71,26 +71,38 @@ class Q_table():
         # """At the beginning epsilon is 0.2, after 300 episodes decades to 0.05, and eventually go to 0."""
         # return 20. / (num_episode + 100)
 
+    """
+        根据epsilon-greedy的策略选择action
+    """
     def take_action(self, x, y, num_episode):
         """epsilon-greedy action selection"""
-        # episode的概率进行随机选取动作
+        # epsilon的概率进行随机选取动作
         if random.random() < self._epsilon():
+            # 随机选择action
             return int(random.random() * 4)
         else:
+            # 将四种action对应的Q值存在actions_value中
             actions_value = [self.table[self._index(a, x, y)] for a in range(self.actions)]
+            # 返回当前state下Q值最大对应的action
+            # index就是在0、1、2、3中选择
             return actions_value.index(max(actions_value))
 
+    """
+        这个函数是，先将当前状态下的四种行为所对应的Q值放到actions_value中
+        然后在四种行为中选择Q值最大的那个action，最终返回最大Q值
+    """
     def max_q(self, x, y):
+        # 后面的for循环是：取四个action，然后通过Q表的索引找到当前状态下，采取行为所对应的Q值
+        # 最外层的[]是放四个不同的action对应的Q值，所以actions_value总是有四个
+        # actions_value是一个长度为4的列表
         actions_value = [self.table[self._index(a, x, y)] for a in range(self.actions)]
-        print(len(self.table))
-        print(actions_value)
-        print("-" * 50)
         return max(actions_value)
 
     # 更新Q表
     def update(self, a, s0, s1, r, is_terminated):
         # both s0, s1 have the form [x,y]
         q_predict = self.table[self._index(a, s0[0], s0[1])]
+        # print(q_predict)
         if not is_terminated:
             q_target = r + self.gamma * self.max_q(s1[0], s1[1])
         else:
@@ -108,18 +120,23 @@ def cliff_walk():
         # within the whole learning process
         episodic_reward = 0
         is_terminated = False
+        # episode开始时的state是起点位置
         s0 = [0, 0]
         while not is_terminated:
             # within one episode
+            # 循环内的s0代表当前state
             action = table.take_action(s0[0], s0[1], num_episode)
             # 选择了action之后的奖励、状态和是否结束游戏
+            # 也就是走了一步之后,s1代表下一步的state
             r, s1, is_terminated = env.step(action)
             table.update(action, s0, s1, r, is_terminated)
             episodic_reward += r
             # env.render(frames=1)
+            # 当前位置变为了s1
             s0 = s1
         if num_episode % 20 == 0:
             print("Episode: {}, Score: {}".format(num_episode, episodic_reward))
+        # 一个episode结束之后，重置环境
         env.reset()
 
 if __name__ == "__main__":
