@@ -5,21 +5,26 @@ import random
 class Env():
     def __init__(self, length, height):
         # define the height and length of the map
-        self.length = length # 12
-        self.height = height # 4
+        self.length = length  # 12
+        self.height = height  # 4
         # define the agent's start position
         self.x = 0
         self.y = 0
 
+    # 动态的用符号渲染地图
     def render(self, frames=50):
+        # 逐行打印
         for i in range(self.height):
-            if i == 0: # cliff is in the line 0
+            # 打印悬崖行
+            if i == 0:  # cliff is in the line 0
                 # 第0行[S, x, x, x, x, x, x, x, x, x, x, T]
-                line = ['S'] + ['x']*(self.length - 2) + ['T'] # 'S':start, 'T':terminal, 'x':the cliff
+                line = ['S'] + ['x']*(self.length - 2) + ['T']  # 'S':start, 'T':terminal, 'x':the cliff
+            # 打印其他三行
             else:
                 line = ['.'] * self.length
+            # 将agent所在的位置标为o
             if self.x == i:
-                line[self.y] = 'o' # mark the agent's position as 'o'
+                line[self.y] = 'o'  # mark the agent's position as 'o'
             print(''.join(line))
         print('\033['+str(self.height+1)+'A')  # printer go back to top-left
         time.sleep(1.0 / frames)
@@ -57,7 +62,7 @@ class Q_table():
         self.actions = actions
         self.length = length
         self.height = height
-        self.alpha = alpha
+        self.alpha = alpha  # 学习率
         self.gamma = gamma  # 折扣因子
 
     # 在一维Q表中寻找，对应状态下采取特定action的索引
@@ -131,7 +136,8 @@ def cliff_walk():
             r, s1, is_terminated = env.step(action)
             table.update(action, s0, s1, r, is_terminated)
             episodic_reward += r
-            # env.render(frames=1)
+            # 渲染动态过程
+            # env.render(frames=100)
             # 当前位置变为了s1
             s0 = s1
         if num_episode % 20 == 0:
