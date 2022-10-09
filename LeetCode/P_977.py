@@ -20,6 +20,7 @@ class Solution:
         return new_list
 
 
+
 if __name__ == "__main__":
     c = Solution()
     nums = [-4, -1, 0, 3, 10]
