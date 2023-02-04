@@ -34,7 +34,7 @@ plt.plot(data, y_tanh, c="red", label="tanh")
 plt.ylim((-1, 5))
 plt.legend(loc="best")
 
-# 子图3
+# 子图4
 plt.subplot(224)
 plt.plot(data, y_softplus, c="red", label="softplus")
 plt.ylim((-1, 5))
