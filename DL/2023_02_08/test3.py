@@ -73,16 +73,17 @@ for t in range(100):
     # 每五步进行打印一次
     if t % 5 == 0:
         plt.cla()
-        plt.scatter(x.numpy(), y.numpy())
+        plt.scatter(x, y)
         # 进行绘制线条
         plt.plot(x.numpy(), prediction.detach().numpy(), "r-", lw=5)
         plt.text(0.5, 0, "Loss=%.4f" % loss.data.numpy(), fontdict={"size": 20, "color": "red"})
         plt.pause(0.2)
 
+print(f"最终的loss为{loss.data.numpy()}")
 plt.ioff()
 plt.show()
 
-print(f"最终的loss为{loss.data.numpy()}")
+
 
 
 
