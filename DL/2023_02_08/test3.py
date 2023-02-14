@@ -39,22 +39,19 @@ class Net(torch.nn.Module):
         return x
 
 
+
 # 使用搭建好的神经网络
 net = Net(1, 10, 1)
 # 输出神经网络的层结构
 print(net)
 
-# 将matplotlib设定为实时打印
+# 打开交互模式
 plt.ion()
-plt.show()
-
 
 # 优化神经网络参数
 optimizer = torch.optim.SGD(net.parameters(), lr=0.5)
 # 损失函数
 loss_func = torch.nn.MSELoss()
-
-
 
 # 开始训练,训练100步
 for t in range(100):
@@ -66,20 +63,24 @@ for t in range(100):
     optimizer.zero_grad()
     # 进行误差的反向传播
     loss.backward()
-    # 然后逐步优化
+    # 使用优化器逐步优化
     optimizer.step()
 
     # 进行可视化
     # 每五步进行打印一次
     if t % 5 == 0:
+        # 清空绘图区域
         plt.cla()
+        # 先绘制原有数据的散点图
         plt.scatter(x, y)
         # 进行绘制线条
         plt.plot(x.numpy(), prediction.detach().numpy(), "r-", lw=5)
+        # 显示实时loss
         plt.text(0.5, 0, "Loss=%.4f" % loss.data.numpy(), fontdict={"size": 20, "color": "red"})
         plt.pause(0.2)
 
 print(f"最终的loss为{loss.data.numpy()}")
+# 关闭交互模式
 plt.ioff()
 plt.show()
 
